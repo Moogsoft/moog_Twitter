@@ -1,0 +1,28 @@
+{
+  "name": "MOOG_TWITTER",
+  "description": "MOOG Twitter integration EWE",
+  "version": "1.0.1",
+  "keywords": [
+    "TWITTER",
+    "MOOG"
+  ],
+  "maintainers": [
+    "Stephen Hart <stephen@moogsoft.com> (www.moogsoft.com)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/moogsoft/tbd"
+  },
+  "dependencies": {
+    "ntwitter": "0.5.0"
+  },
+  "directories": {
+  },
+  "main": "twitter2moog.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stephen@moogsoft.com",
+  "license": "ISC",
+  "readme": "See the Google Doc: Twitter LAM Instructions.gdoc"
+}
