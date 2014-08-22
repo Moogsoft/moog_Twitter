@@ -1,0 +1,79 @@
+
+var getServiceSeverity = function(s) {
+
+		switch(s.toLowerCase()) {
+			case "ok" 	: return 0;
+				    		break;
+			case "critical" : return 5;
+					  	break;
+			case "warning" 	: return 2;
+						break;
+			case "down" 	: return 5;
+				      		break;
+			case "up" 	: return 0;
+				    		break;
+			case "unknown" 	: return 4;
+					 	break;
+			default 	: return 1;
+				  		break;
+		}
+}
+			
+
+var MoogEvent=function() {
+
+		// Naked event attributes.
+
+		this.signature="";
+		this.source_id="";
+		this.external_id="";
+		this.manager= "Twitter2Moog"
+		this.source = "",
+		this.class = "SocialMedia",
+		this.agent_location = "",
+		this.type = "Tweet",
+		this.severity = 0;
+		this.description = "",
+		this.first_occurred = 0;
+		this.agent_time = 0
+}
+
+var Logger = function() {
+
+	this.logLevel=2;
+
+	this.info=function(m) { writeLog(this,2,"info",m); }
+	this.warning=function(m) { writeLog(this,3,"warn",m); }
+	this.debug=function(m) { writeLog(this,1,"debug",m); }
+	this.critical=function(m) { writeLog(this,99,"fatal",m); }
+
+	this.setLogLevel=setLogLevel;
+
+	function writeLog(logobj,level,tag,message) {
+		if ( level >= logobj.logLevel ) {
+			var date=new Date();
+			console.log("[" + tag.toUpperCase() + "] : " + date.toUTCString() + " : " + message);
+		}
+	}
+	function setLogLevel(level) {
+			switch(level.toLowerCase()) {
+				case "all": 	this.logLevel = -1;
+						break;
+				case "debug": 	this.logLevel = 1;
+						break;
+				case "info" :	this.logLevel = 2;
+						break;
+				case "warning" :  this.logLevel =  3;
+						  break;
+				case "warn" :  this.logLevel =  3;
+						  break;
+				default : this.logLevel = 2;
+					  this.logTag="info";
+					  break;
+			}
+	}
+}
+
+exports.MoogEvent = MoogEvent;
+exports.Logger = Logger;
+exports.getServiceSeverity = getServiceSeverity;
